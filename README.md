@@ -33,21 +33,25 @@ git clone https://github.com/rogertcd/epayco.git
 cd epayco
 ```
 3. Crear un archivo llamado `.env` y copiar el contenido del archivo `.env.example` a `.env`
-   
 
-4. Ejecute el siguiente comando de docker-compose
+
+4. Ingrese al directorio `rest`
+```
+cd rest
+```
+5. Crear un archivo llamado `.env` y copiar el contenido del archivo `.env.example` a `.env`
+
+
+6. Vuelva al directorio raíz `epayco`
+```
+cd ..
+```
+7. Ejecute el siguiente comando de docker-compose
 ```
 docker-compose up -d
 ```
 
-5. Ingrese al directorio `rest`
-```
-cd rest
-```
-6. Crear un archivo llamado `.env` y copiar el contenido del archivo `.env.example` a `.env`
-
-
-7. Para realizar pruebas de los endpoints, importe la colección del archivo `ePayco.postman_collection.json` con Postman 
+8. Para realizar pruebas de los endpoints, importe la colección del archivo `ePayco.postman_collection.json` con Postman 
 
 
 
