@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "f302a45c-045c-4a9d-a460-27975e88f058",
+		"name": "ePayco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7531018"
+	},
+	"item": [
+		{
+			"name": "Create new client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "document",
+							"value": "5789260",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Sandra Vargas Muñoz",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sandra",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/client/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"client",
+						"create"
+					]
+				},
+				"description": "Create a new client for the wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Get current balance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "document",
+							"value": "5789256",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "72966304",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/wallet/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"wallet",
+						"balance"
+					]
+				},
+				"description": "Get the current balance of the wallet"
+			},
+			"response": []
+		},
+		{
+			"name": "Charge credit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "document",
+							"value": "5789256",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "72966304",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "40",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/wallet/charge",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"wallet",
+						"charge"
+					]
+				},
+				"description": "Pay for an order"
+			},
+			"response": []
+		},
+		{
+			"name": "Pay an order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "document",
+							"value": "5789256",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "72966304",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "40",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/wallet/payorder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"wallet",
+						"payorder"
+					]
+				},
+				"description": "Confirm a pay for an order"
+			},
+			"response": []
+		},
+		{
+			"name": "Pay confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "document",
+							"value": "5789256",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "72966304",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "40",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/wallet/payorder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"wallet",
+						"payorder"
+					]
+				},
+				"description": "Charge credit for a wallet"
+			},
+			"response": []
+		}
+	]
+}

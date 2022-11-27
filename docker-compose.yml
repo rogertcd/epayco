@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+  mysql8:
+    build: './build/mysql'
+#    image: mysql:latest
+    container_name: '${COMPOSE_PROJECT_NAME}-mysql8'
+    restart: 'always'
+    ports:
+      - "127.0.0.1:${HOST_MACHINE_MYSQL_PORT}:3306"
+    command: --default-authentication-plugin=caching_sha2_password
+    volumes:
+      # Si ya está asignado el volumen en otra instalación ya no hace falta colocarlo aquí
+      - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
+      - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
+      - ${MYSQL_DUMP_DIR}:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: America/Caracas
+    networks:
+      - epayco
+  soap:
+#    image: docker.io/bitnami/laravel:9
+    build: './build/php'
+    container_name: '${COMPOSE_PROJECT_NAME}-soap'
+    ports:
+      - "${HOST_MACHINE_UNSECURE_HOST_PORT}:80"
+    environment:
+      - DB_HOST=mysql8
+      - DB_PORT=${HOST_MACHINE_MYSQL_PORT}
+      - DB_USERNAME=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - ${DOCUMENT_ROOT_SOAP}:/var/www/html
+      - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
+      - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
+      - ${LOG_DIR-./logs/apache2}:/var/log/apache2
+    depends_on:
+      - mysql8
+    networks:
+      - epayco
+  rest:
+    build: './rest'
+    volumes:
+      - ${DOCUMENT_ROOT_REST}:/usr/src/app
+#      - "./start.sh:/usr/src/app/start.sh"
+    container_name: '${COMPOSE_PROJECT_NAME}-rest'
+    restart: always
+    ports:
+      - 4000:4000
+    env_file: .env
+    depends_on:
+      - soap
+    networks:
+      - epayco
+#    command: bash -c /usr/src/app/start.sh
+#    command: /bin/sh -c "start.sh"
+networks:
+  epayco:
