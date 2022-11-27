@@ -3,7 +3,7 @@ version: '3.9'
 services:
   mysql8:
     build: './build/mysql'
-#    image: mysql:latest
+    #    image: mysql:latest
     container_name: '${COMPOSE_PROJECT_NAME}-mysql8'
     restart: 'always'
     ports:
@@ -23,7 +23,7 @@ services:
     networks:
       - epayco
   soap:
-#    image: docker.io/bitnami/laravel:9
+    #    image: docker.io/bitnami/laravel:9
     build: './build/php'
     container_name: '${COMPOSE_PROJECT_NAME}-soap'
     ports:
@@ -47,7 +47,8 @@ services:
     build: './rest'
     volumes:
       - ${DOCUMENT_ROOT_REST}:/usr/src/app
-#      - "./start.sh:/usr/src/app/start.sh"
+      - /usr/src/app/node_modules
+    #      - "./start.sh:/usr/src/app/start.sh"
     container_name: '${COMPOSE_PROJECT_NAME}-rest'
     restart: always
     ports:
