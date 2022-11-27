@@ -1,16 +1,12 @@
 # Descripción
 
-Reto de programación fullstack para ePayco
+Reto de programación backend para ePayco
 
 ## SOAP
 Proyecto desarrollado en PHP 7.4, utilizando nuSOAP con una Base de Datos MySQL 8
 
 ## REST
 Proyecto desarrollado en node 19, utilizando Express
-
-## Demo
-
-Ir al demo del proyecto desplegado en Heroku [https://rcnativapps.herokuapp.com/](https://rcnativapps.herokuapp.com/)
 
 ## Herramientas y tecnologías utilizadas
 
@@ -19,6 +15,7 @@ Ir al demo del proyecto desplegado en Heroku [https://rcnativapps.herokuapp.com/
 - MySQL 8
 - Docker y docker-compose
 - Github
+- Postman
 
 ## Requerimientos
 
@@ -50,7 +47,7 @@ cd rest
 6. Crear un archivo llamado `.env` y copiar el contenido del archivo `.env.example` a `.env`
 
 
-7. Importe la colección del archivo `ePayco.postman_collection.json` con Postman 
+7. Para realizar pruebas de los endpoints, importe la colección del archivo `ePayco.postman_collection.json` con Postman 
 
 
 
